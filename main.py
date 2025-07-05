@@ -33,7 +33,6 @@ try:
         if img_el:
             img_url = img_el[0].get_attribute("src")
             img_data = requests.get(img_url).content
-            import os
 
        import os
 
