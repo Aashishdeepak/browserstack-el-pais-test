@@ -36,12 +36,16 @@ try:
 
        import os
 
-       # Create 'images' folder if it doesn't exist
-       os.makedirs("images", exist_ok=True)
+# Ensure the images directory exists before writing
+os.makedirs("images", exist_ok=True)
 
-       # Save the image with sanitized title
-       with open(f"images/{title[:15].replace(' ', '_')}.jpg", "wb") as f:
-           f.write(image_content)
+# Sanitize and prepare a safe filename
+safe_title = title[:15].strip().replace(" ", "_").replace("/", "-")
+filename = f"images/{safe_title}.jpg"
+
+# Save the image content safely
+with open(filename, "wb") as f:
+    f.write(image_content)
 
             with open(f"images/{title[:15].replace(' ', '_')}.jpg", "wb") as f:
                 f.write(img_data)
