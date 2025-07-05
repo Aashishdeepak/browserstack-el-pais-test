@@ -33,6 +33,17 @@ try:
         if img_el:
             img_url = img_el[0].get_attribute("src")
             img_data = requests.get(img_url).content
+            import os
+
+       import os
+
+       # Create 'images' folder if it doesn't exist
+       os.makedirs("images", exist_ok=True)
+
+       # Save the image with sanitized title
+       with open(f"images/{title[:15].replace(' ', '_')}.jpg", "wb") as f:
+           f.write(image_content)
+
             with open(f"images/{title[:15].replace(' ', '_')}.jpg", "wb") as f:
                 f.write(img_data)
 finally:
